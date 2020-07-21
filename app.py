@@ -10,9 +10,9 @@ client = SecretClient(vault_url=https://translateappenvvars.vault.azure.net/, cr
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY']=client.get_secret('SECRET_KEY')
+client = SecretClient(vault_url= , credential=DefaultAzureCredential())
 
-client = SecretClient(vault_url= , credential=DefaultAzureCredential() )
+app.config['SECRET_KEY']=client.get_secret('SECRET_KEY')
 
 langs = requests.get('https://api.cognitive.microsofttranslator.com/languages?api-version=3.0')
 langs = langs.json()
